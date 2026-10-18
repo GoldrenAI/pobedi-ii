@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мнемо — память человека против ИИ</title>
+<meta name="description" content="Мнемо: веб-игра «Победи ИИ» — сравните свою память с архивными ответами языковой модели. Тренажёр рабочей памяти и факты о памяти человека и ИИ. Без регистрации.">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d1d1f'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='26' fill='%23a67a1e'%3EЧ%3C/text%3E%3Ctext x='32' y='56' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='17' fill='%23f5f5f7'%3EИ%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="inner">
+    <div class="brand">
+      <div class="name">Мнемо</div>
+      <div class="tagline">игра · тренажёр · память</div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html" class="active">Главная</a>
+      <a href="igra.html">Играть</a>
+      <a href="trenazhyor.html">Тренажёр</a>
+      <a href="fakty.html">Факты</a>
+      <a href="igra.html" class="cta">Начать раунд</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ================= ГЕРОЙ ================= -->
+<section class="hero">
+  <div class="issue">
+    <span>Исследовательский проект</span><span class="dot"></span>
+    <span>информатика · 10 «А»</span><span class="dot"></span>
+    <span>версия 1.0</span>
+  </div>
+  <h1>Твоя память против <span class="serif gold">памяти</span> ИИ</h1>
+  <p class="lede">Прочитай незнакомый текст и ответь на десять вопросов. Твой результат сравнивается с архивными ответами настоящей языковой модели — с полным разбором каждого вопроса.</p>
+  <div class="actions">
+    <a class="btn primary" href="igra.html">Играть</a>
+    <a class="btn teal" href="trenazhyor.html">Тренажёр памяти</a>
+    <a class="btn teal" href="fakty.html">Мифы о памяти</a>
+  </div>
+  <div class="stat-rule">
+    <div class="stat"><div class="num">6</div><div class="cap">текстов — 300, 900 и 1800 слов</div></div>
+    <div class="stat"><div class="num">60</div><div class="cap">вопросов, по десять на текст</div></div>
+    <div class="stat"><div class="num"><span class="gold">18</span></div><div class="cap">запусков модели в архиве</div></div>
+    <div class="stat"><div class="num">0</div><div class="cap">регистраций и сбора данных</div></div>
+  </div>
+</section>
+
+<!-- ================= ЧТО ЭТО ================= -->
+<section class="section" id="about">
+  <div class="kicker">Как это устроено</div>
+  <h2 class="section-title">Соперник — не выдуманный «ИИ», <span class="serif">а настоящий архив</span></h2>
+  <p class="section-lead">В большинстве игр «против компьютера» машина поддаётся или играет за обоих. Здесь у игры есть зафиксированный архив: тот же текст, те же десять вопросов, три независимых запуска на каждый материал — без ключей и подсказок.</p>
+
+  <div class="vs-table reveal">
+    <div class="vs-head">
+      <div class="first">Условие</div>
+      <div class="h">Человек</div>
+      <div class="a">Языковая модель</div>
+    </div>
+    <div class="vs-row">
+      <div class="aspect">Источник при ответе</div>
+      <div class="hcol">«По памяти» — текст скрыт; «С текстом» — источник доступен.</div>
+      <div class="acol">Полный текст входит в каждый запрос.</div>
+    </div>
+    <div class="vs-row">
+      <div class="aspect">Что измеряется</div>
+      <div class="hcol">Точность воспроизведения прочитанного.</div>
+      <div class="acol">Точность использования переданного контекста.</div>
+    </div>
+    <div class="vs-row">
+      <div class="aspect">Повторы</div>
+      <div class="hcol">Каждый текст предъявляется один раз.</div>
+      <div class="acol">Три независимых запуска — оценка устойчивости.</div>
+    </div>
+    <div class="vs-row">
+      <div class="aspect">Что не измеряется</div>
+      <div class="hcol">Интеллект и «ёмкость мозга».</div>
+      <div class="acol">Общий объём знаний в параметрах.</div>
+    </div>
+  </div>
+
+  <div class="paper-note reveal">
+    В архиве модель ответила на все вопросы банка без ошибок. Это не разгром: текст был у неё перед глазами, а вопросы проверяли короткие факты. Такой результат — верхняя граница чувствительности теста, а не доказательство безграничной памяти ИИ. Главный сценарий игры поэтому сравнивает твои ответы без текста и с текстом.
+  </div>
+</section>
+
+<!-- ================= ТЁМНАЯ СЕКЦИЯ: ИГРА ================= -->
+<section class="dark-section reveal" id="game">
+  <div class="kicker">Продукт</div>
+  <h2 class="section-title" style="color:#fff">Веб-игра <span class="serif">«Победи ИИ»</span></h2>
+  <p class="section-lead" style="color:var(--dark-muted);margin-bottom:32px">Чтение с таймером, короткое отвлекающее задание, десять вопросов и шесть минут на ответы. После раунда — разбор: твой ответ, эталон, ответ модели и предложение-основание из текста.</p>
+  <div class="grid cols-2" style="margin-bottom:32px">
+    <div class="card" style="background:var(--dark-2);border-radius:16px">
+      <span class="num-marker">Режимы</span>
+      <h3 style="color:#fff">«По памяти» и «С текстом»</h3>
+      <p>Первый повторяет главный сценарий проекта: память против инструмента с источником. Второй выравнивает доступ к тексту — и показывает, сколько стоит сам доступ.</p>
+    </div>
+    <div class="card" style="background:var(--dark-2);border-radius:16px">
+      <span class="num-marker">Приватность</span>
+      <h3 style="color:#fff">Только твой браузер</h3>
+      <p>Без регистрации и аккаунтов. Результаты и личные рекорды хранятся на устройстве и никуда не отправляются.</p>
+    </div>
+  </div>
+  <a class="btn primary" href="igra.html">Начать раунд</a>
+</section>
+
+<!-- ================= ПОМИМО ИГРЫ ================= -->
+<section class="section" id="beyond">
+  <div class="kicker teal">Ещё на сайте</div>
+  <h2 class="section-title">Тренажёр <span class="serif">и факты</span></h2>
+  <p class="section-lead">Два раздела помимо игры — на той же научной основе, что и сам проект.</p>
+
+  <div class="grid cols-2">
+    <div class="card reveal">
+      <span class="num-marker">Тренажёр</span>
+      <h3>Два упражнения о памяти</h3>
+      <p>Восстанови ряд цифр после короткой демонстрации и посмотри, до какой длины дотягиваешься ты. Затем вспомни список из двенадцати слов — и сравни свои позиции воспроизведения с классической кривой из эксперимента Б. Мёрдока 1962 года.</p>
+      <span class="src"><a href="trenazhyor.html">Открыть тренажёр</a> · упражнения — демонстрация, не стандартизированный тест</span>
+    </div>
+    <div class="card reveal">
+      <span class="num-marker">Квиз</span>
+      <h3>Восемь мифов о памяти</h3>
+      <p>«Фотографическая память», «ИИ помнит как человек», «перечитать сто раз — значит выучить»: выбери «миф» или «правда» и получи объяснение с отсылками к научным работам — от Миллера и Коуэна до Lost in the Middle.</p>
+      <span class="src"><a href="fakty.html">Проверить себя</a> · каждое объяснение со ссылкой на источник</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= О ПРОЕКТЕ ================= -->
+<section class="section" id="project">
+  <div class="kicker">О проекте</div>
+  <h2 class="section-title">Исследование, <span class="serif">а не только игра</span></h2>
+  <p class="section-lead">«Победи ИИ» — продукт индивидуального проекта «Память человека и искусственного интеллекта: сравнительное исследование». Автор проекта — Толмачёв Глеб, 10 «А» класс, МБОУ СОШ № 67 г. Владивостока.</p>
+  <div class="paper-note reveal">
+    Проект сравнивает ответы человека после чтения в двух режимах — без текста (H0) и с текстом (H1) — и ответы языковых моделей, которым источник доступен всегда (M). Методика включает 36 материалов трёх длин с целевыми блоками фактов в начале, середине и конце; правила оценки фиксируются до испытаний. Главный вывод: одинаковый счёт не означает одинаковые механизмы — сравнивать нужно ответ по памяти и ответ с доступом к источнику.
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>© 2026 «Мнемо» · игра «Победи ИИ» — продукт индивидуального проекта</div>
+    <div>Ответы моделей — архив за октябрь 2026 года</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(function(e){ e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>

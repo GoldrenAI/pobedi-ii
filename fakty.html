@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мифы и правда о памяти — Мнемо</title>
+<meta name="description" content="Интерактивный квиз: восемь утверждений о памяти человека и «памяти» ИИ. Каждое объяснение — со ссылкой на научную публикацию.">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d1d1f'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='26' fill='%23a67a1e'%3EЧ%3C/text%3E%3Ctext x='32' y='56' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='17' fill='%23f5f5f7'%3EИ%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="inner">
+    <div class="brand">
+      <div class="name">Мнемо</div>
+      <div class="tagline">игра · тренажёр · память</div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">Главная</a>
+      <a href="igra.html">Играть</a>
+      <a href="trenazhyor.html">Тренажёр</a>
+      <a href="fakty.html" class="active">Факты</a>
+      <a href="igra.html" class="cta">Начать раунд</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="section" style="padding-top:64px">
+  <div class="kicker teal">Ещё на сайте</div>
+  <h1 class="section-title">Мифы <span class="serif">и правда</span> о памяти</h1>
+  <p class="section-lead">Восемь утверждений о памяти человека и «памяти» ИИ. Выбери «миф» или «правда» — и сразу увидишь объяснение со ссылкой на публикацию из списка литературы проекта.</p>
+
+  <div id="quiz"></div>
+
+  <div class="trainer-stage" id="quiz-total" style="display:none;text-align:center">
+    <p style="font-size:26px;font-weight:700;margin-bottom:6px">Верно: <span id="quiz-score" style="color:var(--accent)">0</span> из 8</p>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:18px" id="quiz-verdict"></p>
+    <button class="btn primary" id="quiz-restart">Пройти заново</button>
+  </div>
+</section>
+
+<section class="section" id="howmemory">
+  <div class="kicker">Коротко</div>
+  <h2 class="section-title">Память — не хранилище, <span class="serif">а процесс</span></h2>
+  <p class="section-lead">Главный урок проекта: человеческая память — не «жёсткий диск» с файлами, а кодирование, сохранение и извлечение, которое каждый раз пересобирает воспоминание. У языковой модели «память» в рамках этого эксперимента — работа с текстом, находящимся прямо в запросе.</p>
+  <div class="grid cols-3">
+    <div class="card reveal">
+      <span class="num-marker">Блоки</span>
+      <h3>Измеряется блоками, а не словами</h3>
+      <p>Рабочая память измеряется смысловыми блоками: в контролируемых условиях — обычно 3–5. Поэтому номер 8-914-123-45-67 запоминается легче, чем 89141234567.</p>
+      <span class="src">Cowan N., 2001 · <a href="https://pubmed.ncbi.nlm.nih.gov/11515286/" target="_blank" rel="noopener">публикация</a></span>
+    </div>
+    <div class="card reveal">
+      <span class="num-marker">Пересборка</span>
+      <h3>Воспоминания меняются</h3>
+      <p>Воспоминание о событии — не копия, а пересборка. Последующие вопросы и подсказки способны незаметно изменить то, что человек уверенно «помнит».</p>
+      <span class="src">Loftus E. F., 1997 · <a href="https://staff.washington.edu/eloftus/Articles/sciam.htm" target="_blank" rel="noopener">публикация</a></span>
+    </div>
+    <div class="card reveal">
+      <span class="num-marker">Контекст</span>
+      <h3>«Память» модели — это контекст</h3>
+      <p>В этом эксперименте модель отвечает по тексту, который видит прямо сейчас. Чем длиннее контекст, тем труднее удержать все связи — и середина длинного текста часто «теряется».</p>
+      <span class="src">Liu et al., 2024 · <a href="https://aclanthology.org/2024.tacl-1.9/" target="_blank" rel="noopener">публикация</a></span>
+    </div>
+    <div class="card reveal">
+      <span class="num-marker">Глубина</span>
+      <h3>Время — ещё не запоминание</h3>
+      <p>Важна глубина обработки: понять и связать материал полезнее, чем много раз перечитать один и тот же абзац.</p>
+      <span class="src">обзор: Baddeley A., 2015 · <a href="https://www.bps.org.uk/psychologist/looking-back-how-it-all-began" target="_blank" rel="noopener">публикация</a></span>
+    </div>
+    <div class="card reveal">
+      <span class="num-marker">Проверка</span>
+      <h3>Само тестирование тренирует</h3>
+      <p>Попытка вспомнить без подсказки улучшает долгосрочное удержание сильнее повторного чтения — эффект тестирования.</p>
+      <span class="src">Roediger, Karpicke, 2006 · <a href="http://psychnet.wustl.edu/memory/wp-content/uploads/2018/04/Roediger-Karpicke-2006_PsychSci.pdf" target="_blank" rel="noopener">публикация</a></span>
+    </div>
+    <div class="card reveal">
+      <span class="num-marker">Новое</span>
+      <h3>Гиппокамп собирает новое</h3>
+      <p>Новые факты и события закрепляются при участии гиппокампа, а знания со временем распределяются по коре мозга. Это не пересылка готового файла.</p>
+      <span class="src">Squire et al., 2015 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4526749/" target="_blank" rel="noopener">публикация</a></span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>© 2026 «Мнемо» · игра «Победи ИИ» — продукт индивидуального проекта</div>
+    <div>18 источников в списке литературы проекта</div>
+  </div>
+</footer>
+
+<script>
+var MYTHS = [
+  { s: 'Память человека работает как видеозапись: события сохраняются целиком и не меняются.',
+    t: false, src: 'Loftus E. F. Creating false memories // Scientific American, 1997', url: 'https://staff.washington.edu/eloftus/Articles/sciam.htm',
+    v: 'Миф. Воспоминание — пересборка события, а не воспроизведение записи. Э. Лофтус показала: последующие вопросы и подсказки способны менять то, что человек уверенно «помнит».' },
+  { s: 'Одновременно человек удерживает в рабочей памяти примерно четыре блока информации.',
+    t: true, src: 'Cowan N. The magical number 4 // Behavioral and Brain Sciences, 2001', url: 'https://pubmed.ncbi.nlm.nih.gov/11515286/',
+    v: 'Правда — для контролируемых условий. Н. Коуэн, обобщив данные с контролем повторения и укрупнения, оценил ёмкость в 3–5 блоков с центральной величиной около четырёх. «Семь плюс-минус два» Дж. Миллера — тоже про блоки-чанки, а не про отдельные элементы.' },
+  { s: 'Чтобы запомнить текст надёжно, его нужно перечитать много раз.',
+    t: false, src: 'Roediger, Karpicke. Test-enhanced learning // Psychological Science, 2006', url: 'http://psychnet.wustl.edu/memory/wp-content/uploads/2018/04/Roediger-Karpicke-2006_PsychSci.pdf',
+    v: 'Миф. По данным Ф. Крейка и Р. Локхарта, важна глубина обработки: понять и связать материал полезнее, чем дольше смотреть на него. А попытка вспомнить без подсказки укрепляет память сильнее повторного чтения.' },
+  { s: 'ИИ «помнит» ваш прошлый разговор так же, как человек помнит вчерашний день.',
+    t: false, src: 'обзор в основной работе проекта', url: 'index.html#project',
+    v: 'Миф. В основе ответа модели — текст, находящийся прямо в текущем запросе. Память человека — след прошлого опыта, который нужно восстанавливать; «память» модели в этом эксперименте — доступ к источнику здесь и сейчас. Именно это различие — центральное в проекте.' },
+  { s: 'Начало и конец списка слов запоминаются лучше, чем середина.',
+    t: true, src: 'Murdock B. B. The serial position effect of free recall // JEP, 1962', url: 'https://doi.org/10.1037/h0045106',
+    v: 'Правда. Это эффект серийной позиции из классического эксперимента Б. Мёрдока: у кривой воспроизведения выраженные края. Проверить на себе можно в тренажёре. Похожая U-образная кривая обсуждается и для языковых моделей в длинных контекстах.' },
+  { s: 'Гиппокамп нужен для формирования новых воспоминаний о событиях.',
+    t: true, src: 'Squire et al. Memory consolidation // Cold Spring Harbor Perspectives, 2015', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4526749/',
+    v: 'Правда. Гиппокамп и связанные структуры критичны для новых декларативных воспоминаний; сами знания со временем представлены в распределённых системах коры.' },
+  { s: 'Языковая модель не может ошибиться, если правильный ответ есть в тексте перед ней.',
+    t: false, src: 'Liu et al. Lost in the Middle // TACL, 2024', url: 'https://aclanthology.org/2024.tacl-1.9/',
+    v: 'Миф. Включение текста в запрос ещё не гарантирует верного ответа. В работе Lost in the Middle качество ответов падало, когда важная информация находилась в середине длинного контекста; NoLiMa показала, что без буквальных совпадений модели ошибаются чаще.' },
+  { s: 'Если модель ответила на все вопросы банка без ошибок, значит, её память безгранична.',
+    t: false, src: 'основная работа проекта, приложение З', url: 'index.html#about',
+    v: 'Миф. В нашем архиве модель действительно ответила на все вопросы — но текст был у неё перед глазами, а вопросы проверяли короткие факты. Это эффект потолка: тест достиг верхней границы чувствительности и ничего не говорит о «безграничной памяти».' }
+];
+
+var QUIZ = (function(){
+  var box = document.getElementById('quiz');
+  var total = document.getElementById('quiz-total');
+  var score = document.getElementById('quiz-score');
+  var verdict = document.getElementById('quiz-verdict');
+  var answered = 0, correct = 0;
+
+  function build(){
+    answered = 0; correct = 0;
+    box.innerHTML = '';
+    total.style.display = 'none';
+    MYTHS.forEach(function(m, i){
+      var card = document.createElement('div');
+      card.className = 'myth-card';
+      card.innerHTML =
+        '<p class="statement">' + (i+1) + '. «' + m.s + '»</p>' +
+        '<div class="choices">' +
+        '<button class="choice" data-v="true">Правда</button>' +
+        '<button class="choice" data-v="false">Миф</button>' +
+        '</div>' +
+        '<div class="verdict ' + (m.t ? 'b-true' : 'b-false') + '"></div>';
+      var verdictEl = card.querySelector('.verdict');
+      var buttons = card.querySelectorAll('.choice');
+      var done = false;
+      buttons.forEach(function(b){
+        b.addEventListener('click', function(){
+          if (done) return;
+          done = true;
+          answered++;
+          var userTrue = (b.getAttribute('data-v') === 'true');
+          var ok = (userTrue === m.t);
+          if (ok) correct++;
+          buttons.forEach(function(x){
+            x.style.opacity = '0.4';
+            if (x === b) { x.style.opacity = '1'; x.style.borderColor = ok ? 'var(--ok)' : 'var(--err)'; }
+          });
+          verdictEl.innerHTML = '<b>' + (ok ? 'Верно' : (m.t ? 'На самом деле правда' : 'На самом деле миф')) + '</b>' + m.v +
+            '<span class="src-link">Источник: <a href="' + m.url + '" target="_blank" rel="noopener">' + m.src + '</a></span>';
+          verdictEl.classList.add('show');
+          if (answered === MYTHS.length) finish();
+        });
+      });
+      box.appendChild(card);
+    });
+  }
+
+  function finish(){
+    score.textContent = correct;
+    if (correct <= 3) verdict.textContent = 'Есть куда расти — перечитай объяснения и попробуй ещё раз: мифы о памяти живучи даже у тех, кто о них читал.';
+    else if (correct <= 6) verdict.textContent = 'Хороший результат. Самые коварные мифы — про «видеозапись» в голове и безошибочный ИИ.';
+    else verdict.textContent = 'Отличное знание темы. Осталось главное — проверить свою память против архива модели.';
+    total.style.display = 'block';
+    total.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  document.getElementById('quiz-restart').addEventListener('click', function(){
+    build();
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  build();
+})();
+</script>
+</body>
+</html>

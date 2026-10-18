@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тренажёр памяти — Мнемо</title>
+<meta name="description" content="Два упражнения о памяти: восстановление ряда цифр и эффект серийной позиции. Демонстрация классических экспериментов — без регистрации.">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d1d1f'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='26' fill='%23a67a1e'%3EЧ%3C/text%3E%3Ctext x='32' y='56' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='17' fill='%23f5f5f7'%3EИ%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="inner">
+    <div class="brand">
+      <div class="name">Мнемо</div>
+      <div class="tagline">игра · тренажёр · память</div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">Главная</a>
+      <a href="igra.html">Играть</a>
+      <a href="trenazhyor.html" class="active">Тренажёр</a>
+      <a href="fakty.html">Факты</a>
+      <a href="igra.html" class="cta">Начать раунд</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="section" style="padding-top:64px">
+  <div class="kicker teal">Ещё на сайте</div>
+  <h1 class="section-title">Тренажёр <span class="serif">памяти</span></h1>
+  <p class="section-lead">Два упражнения из научной психологии памяти, адаптированные для браузера. Это демонстрации, а не стандартизированные тесты: результат зависит от практики и условий дня. Результаты сохраняются только на твоём устройстве.</p>
+
+  <!-- ============ УПРАЖНЕНИЕ 1: РЯД ЦИФР ============ -->
+  <div class="trainer-stage" id="span-stage" style="text-align:left">
+    <p class="kicker">Упражнение 1</p>
+    <h2 style="font-size:28px;margin-bottom:10px">Восстановление ряда</h2>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:8px">На несколько секунд появится ряд цифр. Введи его в том же порядке. С каждым верным ответом ряд становится длиннее на одну цифру; после двух ошибок подряд упражнение завершается.</p>
+    <p style="color:var(--faint);font-size:13px;margin-bottom:22px">Упрощённая версия классической методики «размера ряда», которую обсуждают работы Дж. Миллера (1956) и Н. Коуэна (2001) — см. <a href="fakty.html">факты о памяти</a>.</p>
+
+    <div id="span-idle">
+      <button class="btn primary" id="span-start">Начать</button>
+      <span style="color:var(--faint);font-size:13px;margin-left:14px" id="span-best"></span>
+    </div>
+
+    <div id="span-run" style="display:none">
+      <div class="digits" id="span-digits">&nbsp;</div>
+      <div id="span-input-row">
+        <input id="span-input" type="text" inputmode="numeric" autocomplete="off" placeholder="Введи ряд цифр" maxlength="14">
+        <div><button class="btn" id="span-submit" style="margin-top:14px">Ответить</button></div>
+        <p class="hint" id="span-hint">Порядок цифр важен</p>
+      </div>
+      <div class="progress-dots" id="span-dots"></div>
+    </div>
+
+    <div id="span-result" style="display:none">
+      <p style="font-size:26px;font-weight:700;margin-bottom:8px">Самый длинный верный ряд: <span id="span-score" style="color:var(--accent)">0</span> цифр</p>
+      <p style="color:var(--muted);font-size:15px" id="span-verdict"></p>
+      <p style="color:var(--faint);font-size:13px;margin-top:10px">Это упражнение — демонстрация, а не стандартизированное измерение: результат меняется от практики, усталости и условий. В лабораторных работах с контролем повторения объём рабочей памяти оценивают в 3–5 блоков информации, но напрямую сравнивать с ними свой ряд нельзя — условия здесь проще.</p>
+      <button class="btn" id="span-again" style="margin-top:18px">Пройти ещё раз</button>
+    </div>
+  </div>
+
+  <!-- ============ УПРАЖНЕНИЕ 2: СЕРИАЛЬНАЯ ПОЗИЦИЯ ============ -->
+  <div class="trainer-stage" id="pos-stage" style="text-align:left;margin-top:28px">
+    <p class="kicker">Упражнение 2</p>
+    <h2 style="font-size:28px;margin-bottom:10px">Серийная позиция</h2>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:8px">Посмотри на список из двенадцати слов — они появятся по одному. Затем введи все слова, которые вспомнишь, в любом порядке.</p>
+    <p style="color:var(--faint);font-size:13px;margin-bottom:22px">В классическом эксперименте Б. Мёрдока (1962) начало и конец списка вспоминаются чаще середины. Ниже ты увидишь свои позиции воспроизведения.</p>
+
+    <div id="pos-idle">
+      <button class="btn primary" id="pos-start">Показать слова</button>
+    </div>
+
+    <div id="pos-run" style="display:none">
+      <div class="digits" id="pos-word" style="font-size:clamp(34px,6vw,52px)">&nbsp;</div>
+      <p class="hint" id="pos-hint">Смотри внимательно…</p>
+    </div>
+
+    <div id="pos-recall" style="display:none">
+      <p style="font-size:21px;font-weight:600;margin-bottom:14px">Вспомни слова и введи их через запятую</p>
+      <input id="pos-input" type="text" style="width:100%;text-align:left" placeholder="например: окно, лес, хлеб…">
+      <button class="btn teal" id="pos-submit" style="margin-top:14px">Проверить</button>
+    </div>
+
+    <div id="pos-result" style="display:none">
+      <p style="font-size:21px;font-weight:600;margin-bottom:14px">Твоё воспроизведение по позициям списка</p>
+      <div class="pos-chart" id="pos-chart"></div>
+      <p style="color:var(--muted);font-size:15px;margin-top:36px" id="pos-verdict"></p>
+      <p style="color:var(--faint);font-size:13px;margin-top:8px">Один пробный список не доказывает эффект у тебя — это демонстрация метода: в эксперименте Мёрдока кривая воспроизведения усреднялась по многим участникам и спискам.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:18px">
+        <button class="btn" id="pos-again">Новый список</button>
+        <a class="btn teal" href="fakty.html">Почему середина теряется</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>© 2026 «Мнемо» · игра «Победи ИИ» — продукт индивидуального проекта</div>
+    <div>Результаты тренажёра хранятся только в твоём браузере</div>
+  </div>
+</footer>
+
+<script>
+var store = (function(){
+  try { var s = window['local'+'Storage']; s.setItem('__t','1'); s.removeItem('__t'); return s; }
+  catch(e){ return null; }
+})();
+
+/* ================= Упражнение 1 ================= */
+var SPAN = (function(){
+  var els = {
+    idle: document.getElementById('span-idle'),
+    run: document.getElementById('span-run'),
+    res: document.getElementById('span-result'),
+    digits: document.getElementById('span-digits'),
+    input: document.getElementById('span-input'),
+    submit: document.getElementById('span-submit'),
+    hint: document.getElementById('span-hint'),
+    dots: document.getElementById('span-dots'),
+    score: document.getElementById('span-score'),
+    again: document.getElementById('span-again'),
+    start: document.getElementById('span-start'),
+    best: document.getElementById('span-best')
+  };
+  var len = 3, errors = 0, seq = '', phase = 'idle', timer = null, attempts = [];
+
+  function showBest(){
+    if (!els.best) return;
+    var b = store ? store.getItem('pbii-span-best') : null;
+    els.best.textContent = b ? ('Лучший результат: ' + b + ' цифр') : '';
+  }
+
+  function gen(n){
+    var s = '';
+    for (var i=0;i<n;i++) s += Math.floor(Math.random()*10);
+    return s;
+  }
+
+  function bestLen(){
+    var best = 0;
+    attempts.forEach(function(a){ if (a.ok && a.len > best) best = a.len; });
+    return best;
+  }
+
+  function next(){
+    if (errors >= 2 || len > 14) { finish(); return; }
+    seq = gen(len);
+    phase = 'show';
+    els.digits.textContent = seq;
+    els.input.value = '';
+    els.input.disabled = true;
+    els.hint.textContent = 'Запоминай…';
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      els.digits.textContent = '\u2022'.repeat(seq.length);
+      phase = 'answer';
+      els.input.disabled = false;
+      els.input.focus();
+      els.hint.textContent = 'Введи ряд в том же порядке';
+    }, 1100 + len*250);
+  }
+
+  function dots(){
+    els.dots.innerHTML = '';
+    attempts.forEach(function(a){
+      var d = document.createElement('span');
+      d.className = 'dot ' + (a.ok ? 'on' : 'off');
+      els.dots.appendChild(d);
+    });
+  }
+
+  function submit(){
+    if (phase !== 'answer') return;
+    var v = els.input.value.replace(/\D/g,'');
+    if (!v) return;
+    var ok = (v === seq);
+    attempts.push({ len: len, ok: ok });
+    dots();
+    if (ok) {
+      errors = 0;
+      len++;
+      next();
+    } else {
+      errors++;
+      if (errors >= 2) { finish(); return; }
+      els.hint.textContent = 'Ошибка. Осталась одна попытка — ряд той же длины';
+      next();
+    }
+  }
+
+  function finish(){
+    clearTimeout(timer);
+    var best = bestLen();
+    els.run.style.display = 'none';
+    els.res.style.display = 'block';
+    els.score.textContent = best;
+    if (store) {
+      var prev = parseInt(store.getItem('pbii-span-best') || '0', 10);
+      if (best > prev) store.setItem('pbii-span-best', String(best));
+    }
+    showBest();
+  }
+
+  function start(){
+    len = 3; errors = 0; attempts = []; phase = 'show';
+    els.idle.style.display = 'none';
+    els.res.style.display = 'none';
+    els.run.style.display = 'block';
+    dots();
+    next();
+  }
+
+  els.start.addEventListener('click', start);
+  els.again.addEventListener('click', start);
+  els.submit.addEventListener('click', submit);
+  els.input.addEventListener('keydown', function(e){ if (e.key === 'Enter') submit(); });
+  showBest();
+  return {};
+})();
+
+/* ================= Упражнение 2 ================= */
+var POS = (function(){
+  var POOL = ['окно','лес','хлеб','море','звезда','камень','ветер','книга','река','огонь','гора','дверь','сад','мост','ключ','поле','соль','тень','нитка','ваза','крыша','тропа','колокол','перекрёсток'];
+  var els = {
+    idle: document.getElementById('pos-idle'),
+    run: document.getElementById('pos-run'),
+    word: document.getElementById('pos-word'),
+    hint: document.getElementById('pos-hint'),
+    recall: document.getElementById('pos-recall'),
+    input: document.getElementById('pos-input'),
+    submit: document.getElementById('pos-submit'),
+    res: document.getElementById('pos-result'),
+    chart: document.getElementById('pos-chart'),
+    verdict: document.getElementById('pos-verdict'),
+    again: document.getElementById('pos-again'),
+    start: document.getElementById('pos-start')
+  };
+  var words = [], hit = [];
+
+  function pick(){
+    var p = POOL.slice();
+    words = [];
+    for (var i=0;i<12;i++){
+      var idx = Math.floor(Math.random()*p.length);
+      words.push(p.splice(idx,1)[0]);
+    }
+  }
+
+  function play(){
+    pick();
+    els.idle.style.display = 'none';
+    els.res.style.display = 'none';
+    els.recall.style.display = 'none';
+    els.run.style.display = 'block';
+    hit = [];
+    var i = 0;
+    (function step(){
+      if (i >= 12){
+        els.run.style.display = 'none';
+        els.recall.style.display = 'block';
+        els.input.value = '';
+        els.input.focus();
+        return;
+      }
+      var w = words[i];
+      els.word.textContent = w;
+      els.hint.textContent = 'Слово ' + (i+1) + ' из 12';
+      setTimeout(function(){
+        els.word.textContent = '·';
+        setTimeout(step, 420);
+      }, 1150);
+      i++;
+    })();
+  }
+
+  function norm(s){ return String(s).toLowerCase().replace(/ё/g,'е').replace(/[^а-я]/g,''); }
+
+  function submit(){
+    var raw = els.input.value.split(/[ ,;]+/).map(norm).filter(Boolean);
+    hit = words.map(function(w){ return raw.indexOf(norm(w)) !== -1; });
+    els.chart.innerHTML = '';
+    var maxH = 130;
+    for (var i=0;i<12;i++){
+      var bar = document.createElement('div');
+      bar.className = 'bar' + (hit[i] ? ' hit' : '');
+      bar.style.height = (hit[i] ? maxH : 8) + 'px';
+      bar.innerHTML = '<span class="lbl">' + (i+1) + '</span>';
+      els.chart.appendChild(bar);
+    }
+    var n = hit.filter(Boolean).length;
+    var first = (hit[0]?1:0)+(hit[1]?1:0)+(hit[2]?1:0);
+    var last = (hit[11]?1:0)+(hit[10]?1:0)+(hit[9]?1:0);
+    var mid = n - first - last;
+    els.verdict.textContent = 'Вспомнено слов: ' + n + ' из 12. Начало списка: ' + first + '/3, середина: ' + mid + '/6, конец: ' + last + '/3.';
+    els.recall.style.display = 'none';
+    els.res.style.display = 'block';
+  }
+
+  els.start.addEventListener('click', play);
+  els.again.addEventListener('click', play);
+  els.submit.addEventListener('click', submit);
+  els.input.addEventListener('keydown', function(e){ if (e.key === 'Enter') submit(); });
+  return {};
+})();
+</script>
+</body>
+</html>
